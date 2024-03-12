@@ -1,0 +1,42 @@
+<div id="map" style = "width: 100%; height: 580px"></div>
+
+<script src = "http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script> <!-- necessary script for map to work -->
+<script>
+    const map = L.map('map').setView([54, -6.4], 2);
+  
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: '© OpenStreetMap'
+    }).addTo(map);
+
+
+    let customIcon = {
+        iconUrl: "https://cdn.iconscout.com/icon/free/png-256/free-hotel-512-453740.png",
+        iconSize:[40,40]
+    }
+
+    let myIcon = L.icon(customIcon);
+
+    let iconOptions = {
+        title: "{{name}}",
+        riseOnHover: true,
+        icon: myIcon,
+    } 
+
+    {{#each hotels}}   
+    
+    var marker = L.marker([{{latitude}}, {{longitude}}], iconOptions).addTo(map);
+
+    {{# if admin}}
+    marker.bindPopup("<b>{{name}}</b><br>{{houseNumber}} {{street}}<br>{{city}}<br>{{country}}<br>{{postcode}}<br><a href=\"/admin/hotellists/hotellist/{{hotelListid}}\">Open hotel list</a>"); //.openPopup();
+    {{else}}
+    marker.bindPopup("<b>{{name}}</b><br>{{houseNumber}} {{street}}<br>{{city}}<br>{{country}}<br>{{postcode}}<br><img src=\"{{imageURL}}\" width=\"50px\"><br><a href=\"/hotellist/{{hotelListid}}\">Open hotel list</a>"); //.openPopup();
+    {{/if}}
+    
+    {{/each}}
+    
+    function onMapClick(e) {
+        alert(`This location has the following coordinates: ${e.latlng.toString()}`);
+    }
+    map.on('click', onMapClick);
+</script>

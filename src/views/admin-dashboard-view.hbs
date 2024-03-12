@@ -1,0 +1,70 @@
+{{> menu active="admin-dashboard"}}
+
+<section class="section">
+    <h2 class="title">
+    {{title}}
+    </h2>
+</section>
+
+<section class="section">
+    <div class="box box-link-hover-shadow">
+        <h3 class="subtitle">Manage All {{userCount}} Users</h3>
+
+        <a href="/admin/users/deleteallusers" class="button is-danger is-pulled-right">Delete ALL Users</a></button>
+
+        <a href="/admin/users" class="button">
+            <span class="icon is-small">
+            <i class="fas fa-folder-open"></i>
+            </span>
+        </a>
+    </div>
+
+    <div class="box box-link-hover-shadow">
+        <h3 class="subtitle">Manage All {{hotelCount}} Hotels</h3>
+
+        <a href="/admin/hotels/deleteallhotels" class="button is-danger is-pulled-right">Delete ALL Hotels</a>
+
+        <a href="/admin/hotels" class="button">
+            <span class="icon is-small">
+            <i class="fas fa-folder-open"></i>
+            </span>
+        </a>
+    </div>
+
+    <div class="box box-link-hover-shadow">
+        <h3 class="subtitle">Manage All {{hoteListCount}} Hotel lists</h3>
+
+        <a href="/admin/hotellists/deleteallhotellists" class="button is-danger is-pulled-right">Delete ALL Hotel Lists</a>
+        
+        <a href="/admin/hotellists" class="button">
+            <span class="icon is-small">
+            <i class="fas fa-folder-open"></i>
+            </span>
+        </a>
+    </div>
+</section>
+
+<section class="section">
+    <table class="table is-fullwidth">
+        <thead>
+            <tr>
+                <td><h1 class="title">Database analytics</h1></td>
+                <td><h2 class="subtitle">Users</h2></td>
+                <td><h2 class="subtitle">Hotel Lists</h2></td>
+                <td><h2 class="subtitle">Hotels</h2></td>
+            <tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Total entries</td>
+                <td>{{userCount}}</td>
+                <td>{{hotelCount}}</td>
+                <td>{{hoteListCount}}</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section>
+    {{> hotels-map}}
+</section>

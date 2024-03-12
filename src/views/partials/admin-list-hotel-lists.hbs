@@ -1,0 +1,28 @@
+{{#each hotelLists}}
+  
+    {{#if @root.admin}}
+        <tr>
+          <td>
+            {{title}}
+          </td>
+          <td>
+            {{_id}}
+          </td>
+          <td>
+            {{userid}}
+          </td>
+          <td>
+            <a href="/admin/hotellists/hotellist/{{_id}}" class="button">
+            <span class="icon is-small">
+                <i class="fas fa-folder-open"></i>
+              </span>
+            </a>
+          </td>
+          <td>
+            <a href="/admin/hotellists/deletehotellist/{{_id}}" class="button">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+    {{/if}}
+{{/each}}

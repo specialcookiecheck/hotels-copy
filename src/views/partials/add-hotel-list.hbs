@@ -1,0 +1,17 @@
+<form class="box" action="/{{#if admin}}admin/hotellists{{else}}dashboard{{/if}}/addhotellist" method="POST">
+  <div class="field is-horizontal">
+    <div class="field-body">
+      <div class="field">
+        <label class="label">Hotel list title</label> <input class="input" type="text" placeholder="Enter hotel list title" name="title" autofocus>
+      </div>
+      {{#if admin}}
+      <div class="field">
+        <label class="label">User Email</label> <input class="input" type="text" placeholder="Enter user email" name="email">
+      </div>
+      {{else}}
+      <input type="hidden" name="email" value="{{user.email}}"/>
+      {{/if}}
+    </div>
+  </div>
+  <button class="button is-link">Add Hotel list</button>
+</form>

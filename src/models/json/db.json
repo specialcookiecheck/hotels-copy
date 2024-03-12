@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "firstName": "Homer",
+      "lastName": "Simpson",
+      "email": "homer@simpson.com",
+      "password": "secret",
+      "_id": "a862c791-e2d9-458c-bb5b-7a6268e8614a"
+    },
+    {
+      "firstName": "Marge",
+      "lastName": "Simpson",
+      "email": "marge@simpson.com",
+      "password": "secret",
+      "_id": "216d7bfa-d815-431c-b92f-43a86a2c0118"
+    },
+    {
+      "firstName": "Bart",
+      "lastName": "Simpson",
+      "email": "bart@simpson.com",
+      "password": "secret",
+      "_id": "9b8062f8-8242-464b-a784-a1d6b7cba374"
+    }
+  ],
+  "hotelLists": [
+    {
+      "title": "My fav places",
+      "_id": "2b90f0cf-3437-4b81-ba30-b03c5a5169ea"
+    },
+    {
+      "title": "Good value",
+      "_id": "56511f27-2fb6-409a-a153-cc80be324ecb"
+    },
+    {
+      "title": "Cheap and cheerful!",
+      "_id": "9b5b5363-cf3e-4d02-9fb2-ef8aaac76295"
+    }
+  ],
+  "hotels": [
+    {
+      "name": "Waldorf Astoria",
+      "_id": "76fa8c51-dd74-4e2b-8641-6c6dcd1a3fe9",
+      "hotelListid": "newlistIdblable"
+    },
+    {
+      "name": "Ritz Carlton",
+      "_id": "fa9ae3f6-adef-467c-abf5-4be31c8f2775",
+      "hotelListid": "newlistIdblable"
+    },
+    {
+      "name": "B&B down the road",
+      "_id": "57ffcc2b-be2f-46dd-9064-5ddf5b96cfa7",
+      "hotelListid": "newlistIdblable"
+    }
+  ]
+}

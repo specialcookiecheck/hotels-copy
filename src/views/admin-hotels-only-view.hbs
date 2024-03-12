@@ -1,0 +1,20 @@
+{{> menu}}
+
+<section class="section">
+  <div class="title">
+    {{title}}
+  </div>
+  {{> admin-add-hotel}}
+  {{> error }}
+  {{> admin-map-with-search}}
+</section>
+
+<section>
+  <div class="has-text-centered">
+    <a href="/admin/hotels/hotelswithlist" class="button is-primary">Display including lists</a>
+  </div>
+</section>
+
+<section class="section">
+  {{> list-hotels}}
+</section>

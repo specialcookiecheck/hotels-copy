@@ -1,0 +1,26 @@
+{{> menu}}
+
+<section class="section">
+  <div class="title">
+    {{title}}
+  </div>
+  {{>add-user}}
+  {{> error }}
+</section>
+
+<section>
+  <table class="table is-fullwidth">
+    <thead>
+      <tr>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Email</th>
+        <th>Password presence</th>
+        <th>userId</td>
+      </tr>
+    </thead>
+    <tbody>
+      {{> list-users }}
+    </tbody>
+  </table>
+</section>

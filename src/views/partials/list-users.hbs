@@ -1,0 +1,34 @@
+    
+      {{#each userList}}
+        <tr {{#if adminAccount}}style="background-color: red;"{{/if}}>
+          <td>
+            {{firstName}}
+          </td>
+          <td>
+            {{lastName}}
+          </td>
+          <td>
+            {{email}}
+          </td>
+          <td>
+            {{#if password}}
+            **password present**
+            {{/if}}
+          </td>
+          <td>
+            {{_id}}
+          </td>
+          <td>
+            <a href="/admin/users/user/{{_id}}" class="ui icon button">
+              <span class="icon is-small">
+                <i class="fas fa-folder-open"></i>
+                </span>
+            </a>
+          </td>
+          <td>
+            <a href="/admin/users/deleteuser/{{_id}}" class="ui icon button">
+              <i class="fas fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+      {{/each}}
