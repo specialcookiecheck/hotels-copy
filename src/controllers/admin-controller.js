@@ -73,6 +73,7 @@ export const adminController = {
         const viewData = {
           title: "Admin All Hotel Lists",
           hotelLists: hotelLists,
+
         };
         if (loggedInUser.email === process.env.ADMIN_EMAIL) {
             viewData.admin = true;
@@ -110,6 +111,7 @@ export const adminController = {
         console.log("adminController listAllHotelsIndex handler started")
         const loggedInUser = request.auth.credentials;
         const geoAPIKey = process.env.GEO_API_KEY;
+        const allHotels = await db.hotelStore.getAllHotels();
         const hotelLists = await db.hotelListStore.getAllHotelLists();
         for (let i = 0; i < hotelLists.length; i++) {
           console.log(`i: ${i}`);
@@ -124,6 +126,7 @@ export const adminController = {
           displayHotels: true,
           displayListDetails: true,
           geoAPIKey: geoAPIKey,
+          hotels: allHotels,
         };
         if (loggedInUser.email === process.env.ADMIN_EMAIL) {
             viewData.admin = true;
