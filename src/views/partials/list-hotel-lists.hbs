@@ -1,6 +1,10 @@
 <section class="section box">
   <div class="has-text-centered">
+    {{# if @root.admin}}
+    <h1 class="title">Hotel Lists for All Users</h1>
+    {{else}}
     <h1 class="title">Your saved Hotel Lists</h1>
+    {{/if}}
     <br>
   </div>
 
@@ -51,6 +55,7 @@
 {{/each}}
 </section>
 
+{{#unless @root.admin}}
 <section class="section box">
   <div class="has-text-centered">
     <h2 class="title">All your favourite hotels everywhere!</h2>
@@ -60,3 +65,4 @@
     {{> hotels-map}}
   </div>
 </section>
+{{/unless}}
