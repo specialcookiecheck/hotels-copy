@@ -15,6 +15,10 @@ export const hotelApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Get all hotelsvApi",
+    notes: "Returns details of all hotels Api",
+    // response: { schema: UserArray, failAction: validationError },
   },
 
   findOne: {
@@ -33,6 +37,10 @@ export const hotelApi = {
         return Boom.serverUnavailable("No hotel with this id");
       }
     },
+    tags: ["api"],
+    description: "Get a specifc hotel Api",
+    notes: "Returns details of a specific hotel Api",
+    // response: { schema: UserArray, failAction: validationError },
   },
 
   create: {
@@ -51,6 +59,10 @@ export const hotelApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Add a specifc hotel Api",
+    notes: "Add details of a specific hotel Api",
+    // response: { schema: UserArray, failAction: validationError },
   },
 
   deleteAll: {
@@ -66,6 +78,10 @@ export const hotelApi = {
         return Boom.serverUnavailable("Database Error");
       }
     },
+    tags: ["api"],
+    description: "Delete all hotels Api",
+    notes: "Delete all hotels Api",
+    // response: { schema: UserArray, failAction: validationError },
   },
 
   deleteOne: {
@@ -87,5 +103,9 @@ export const hotelApi = {
         return Boom.serverUnavailable("No Hotel with this id");
       }
     },
+    tags: ["api"],
+    description: "Delete a specifc hotel Api",
+    notes: "Delete a specific hotel Api",
+    // response: { schema: UserArray, failAction: validationError },
   },
 };

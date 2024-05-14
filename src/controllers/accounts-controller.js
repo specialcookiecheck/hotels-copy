@@ -1,6 +1,13 @@
 import { db } from "../models/db.js";
 import { UserSpec, UserCredentialsSpec } from "../models/joi-schemas.js";
 
+/*
+const firebase = require("firebase");
+const firebaseui = require("firebaseui");
+
+const ui = new firebaseui.auth.AuthUI(firebase.auth());
+*/
+
 export const accountsController = {
   index: {
     auth: false,
