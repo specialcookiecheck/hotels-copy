@@ -1,5 +1,6 @@
 import pkg from "firebase-admin";
 import serviceAccount from "../../../serviceaccount.json" assert { type: "json" }; // necessary to make Firebase work
+//import { getAuth } from "firebase/auth";
 
 const admin = pkg;
 
@@ -14,6 +15,8 @@ export function connectFirebase() {
   const app = admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
+
+  //const auth = getAuth(app);
 
   // console.log(app);
 
