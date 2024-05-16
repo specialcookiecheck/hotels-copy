@@ -69,6 +69,8 @@ export const hotelListApi = {
     },
     handler: async function (request, h) {
       try {
+        console.log("hotelListApi create handler started");
+        console.log("request.payload: ", request.payload);
         const hotelList = request.payload;
         const newHotelList = await db.hotelListStore.addHotelList(hotelList);
         if (newHotelList) {
