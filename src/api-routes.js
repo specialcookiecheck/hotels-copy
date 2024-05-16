@@ -12,6 +12,7 @@ export const apiRoutes = [
   { method: "POST", path: "/api/hotellists", config: hotelListApi.create },
   { method: "DELETE", path: "/api/hotellists", config: hotelListApi.deleteAll },
   { method: "GET", path: "/api/hotellists", config: hotelListApi.find },
+  { method: "GET", path: "/api/hotellists/{id}/hotels", config: hotelListApi.listHotelsByHotelListId },
   { method: "GET", path: "/api/hotellists/{id}", config: hotelListApi.findOne },
   { method: "DELETE", path: "/api/hotellists/{id}", config: hotelListApi.deleteOne },
 

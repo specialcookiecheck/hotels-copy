@@ -53,6 +53,9 @@ async function init() {
   const server = Hapi.server({
     port: process.env.PORT || 3000,
     // host: "localhost",
+    "routes": {
+      "cors": true
+    }
   });
 
   await server.register(Vision);

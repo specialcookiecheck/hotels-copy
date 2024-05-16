@@ -41,6 +41,28 @@ export const hotelListApi = {
     // response: { schema: UserArray, failAction: validationError },
   },
 
+  listHotelsByHotelListId: {
+    auth: {
+      strategy: "jwt",
+    },
+    async handler(request) {
+      console.log("hotelListApi listHotelsByHotelListId handler started");
+      try {
+        const hotels = await db.hotelStore.getHotelsByHotelListId(request.params.id);
+        if (!hotels) {
+          return Boom.notFound("No hotels with this hotelListId");
+        }
+        return hotels;
+      } catch (err) {
+        return Boom.serverUnavailable("No hotels with this hotelListId");
+      }
+    },
+    tags: ["api"],
+    description: "Get hotels by hotelListId Api",
+    notes: "Returns details of hotels by hotelListId Api",
+    // response: { schema: UserArray, failAction: validationError },
+  },
+
   create: {
     auth: {
       strategy: "jwt",
