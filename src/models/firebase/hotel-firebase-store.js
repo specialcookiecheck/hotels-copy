@@ -31,6 +31,42 @@ export const hotelFirebaseStore = {
     return hotel;
   },
 
+  async addImage(hotelId, imageUrl) {
+    console.log("hotelFirebaseStore addImage started");
+    const snapshot = await db.collection("hotels").doc(hotelId).get()
+    let hotel = snapshot.data();
+    console.log(hotel);
+    /*
+    const imageOptions = [
+      "https://cdn.stocksnap.io/img-thumbs/960w/hotel-room_DGBAEIS339.jpg",
+      "https://cdn.stocksnap.io/img-thumbs/960w/modern-room_ORRHZ1VULX.jpg",
+      "https://www.shutterstock.com/shutterstock/photos/2183226477/display_1500/stock-photo-vacation-couple-on-the-beach-near-swimming-pool-luxury-travel-2183226477.jpg",
+      "https://www.shutterstock.com/shutterstock/photos/1964198212/display_1500/stock-photo-asian-girl-receptionist-and-caucasian-woman-traveler-checking-or-checkout-in-hotel-1964198212.jpg",
+      "https://cdn.stocksnap.io/img-thumbs/960w/resort-leisure_9IRWVX4JZL.jpg"
+    ]
+    const randomImageURL = imageOptions[Math.floor(Math.random() * imageOptions.length)];
+    console.log(randomImageURL);
+    hotel.imageURL = randomImageURL;
+    */
+   console.log("adding imageUrlArray");
+    if (hotel.imageURLarray) {
+      hotel.imageURLarray.push(imageUrl);
+    } else {
+      hotel.imageUrlArray = [imageUrl]
+    }
+    console.log("imageUrlArray add completed");
+    console.log(hotel);
+    hotel = Object.setPrototypeOf(hotel, Object.prototype);
+    try{
+      console.log("updating hotel db entry");
+      await db.collection("hotels").doc(hotelId).set(hotel, { merge: true });
+    } catch(error) {
+      console.log(error);
+    }
+    console.log("userFirebaseStore addImage completed");
+    return hotel;
+  },
+
   async getHotelsByHotelListId(id) {
     console.log(`hotelFirebaseStore getHotelsByHotelListId ${id} started`);
     const hotels = [];
@@ -83,7 +119,7 @@ export const hotelFirebaseStore = {
       console.log("hotelFirebaseStore getHotelById undefined, returning null");
       return null
     }
-    console.log("hotelFirebaseStore getHotelById completed, returning user");
+    console.log("hotelFirebaseStore getHotelById completed, returning hotel");
     return returnedHotel;
     }
     console.log("hotelFirebaseStore getHotelById completed, returning null");

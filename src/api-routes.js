@@ -19,6 +19,7 @@ export const apiRoutes = [
   { method: "GET", path: "/api/hotels", config: hotelApi.find },
   { method: "GET", path: "/api/hotels/{id}", config: hotelApi.findOne },
   { method: "POST", path: "/api/hotellists/{id}/hotel", config: hotelApi.create },
+  { method: "POST", path: "/api/hotels/{id}/addImage", config: hotelApi.addImage },
   { method: "DELETE", path: "/api/hotels", config: hotelApi.deleteAll },
   { method: "DELETE", path: "/api/hotels/{id}", config: hotelApi.deleteOne },
 ];

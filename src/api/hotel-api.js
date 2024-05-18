@@ -65,6 +65,33 @@ export const hotelApi = {
     // response: { schema: UserArray, failAction: validationError },
   },
 
+  addImage: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      console.log("hotelApi addImage handler started");
+      try {
+        const hotel = await db.hotelStore.getHotelById(request.params.id);
+        console.log(`hotel: ${hotel}`);
+        console.log(hotel);
+        if (!hotel) {
+          return Boom.notFound("No Hotel with this id");
+        }
+        console.log(request.params.id);
+        console.log(request.payload);
+        await db.hotelStore.addImage(request.params.id, request.payload)
+        return h.response().code(204);
+      } catch (err) {
+        return Boom.serverUnavailable("No Hotel with this id");
+      }
+    },
+    tags: ["api"],
+    description: "Add image to hotel Api",
+    notes: "Add image to a specific hotel Api",
+    // response: { schema: UserArray, failAction: validationError },
+  },
+
   deleteAll: {
     auth: {
       strategy: "jwt",
