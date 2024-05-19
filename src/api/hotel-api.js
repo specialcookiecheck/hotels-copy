@@ -105,7 +105,8 @@ export const hotelApi = {
         console.log(request.params.id);
         console.log("request.payload:", request.payload, typeof request.payload);
         await db.hotelStore.addImage(request.params.id, request.payload.hotelImage);
-        return h.response().code(204);
+        console.log("API addImage completed, returning hotel")
+        return h.response(hotel).code(201);
       } catch (err) {
         return Boom.serverUnavailable("No Hotel with this id");
       }

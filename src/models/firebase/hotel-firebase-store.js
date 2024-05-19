@@ -83,7 +83,7 @@ export const hotelFirebaseStore = {
     } catch(error) {
       console.log(error);
     }
-    console.log("userFirebaseStore addImage completed");
+    console.log("hotelFirebaseStore addImage completed");
     return hotel;
   },
 
