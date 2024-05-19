@@ -65,6 +65,30 @@ export const hotelApi = {
     // response: { schema: UserArray, failAction: validationError },
   },
 
+  update: {
+    auth: {
+      strategy: "jwt",
+    },
+    handler: async function (request, h) {
+      console.log("hotelApi update handler started");
+      try {
+        console.log("request.params.id", request.params.id);
+        console.log("request.payload", request.payload);
+        const hotel = await db.hotelStore.updateHotel(request.params.id, request.payload);
+        if (hotel) {
+          return h.response(hotel).code(201);
+        }
+        return Boom.badImplementation("error updating hotel");
+      } catch (err) {
+        return Boom.serverUnavailable("Database Error");
+      }
+    },
+    tags: ["api"],
+    description: "Update specifc hotel Api",
+    notes: "Update details of a specific hotel Api",
+    // response: { schema: UserArray, failAction: validationError },
+  },
+
   addImage: {
     auth: {
       strategy: "jwt",
@@ -79,8 +103,8 @@ export const hotelApi = {
           return Boom.notFound("No Hotel with this id");
         }
         console.log(request.params.id);
-        console.log(request.payload);
-        await db.hotelStore.addImage(request.params.id, request.payload)
+        console.log("request.payload:", request.payload, typeof request.payload);
+        await db.hotelStore.addImage(request.params.id, request.payload.hotelImage);
         return h.response().code(204);
       } catch (err) {
         return Boom.serverUnavailable("No Hotel with this id");

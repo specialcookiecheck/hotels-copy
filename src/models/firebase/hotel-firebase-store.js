@@ -31,11 +31,29 @@ export const hotelFirebaseStore = {
     return hotel;
   },
 
+  
+  async updateHotel(hotelId, hotel) {
+    console.log("hotelFirebaseStore updateHotel started");
+    console.log("logging hotel")
+    console.log(hotel);
+    console.log("hotel logged");
+    try{
+      console.log("adding updated hotel to database");
+      await db.collection("hotels").doc(hotelId).set(hotel, {merge: false});
+    } catch(error) {
+      console.log(error);
+    }
+    console.log("userFirebaseStore updateHotel completed");
+    return hotel;
+  },
+  
+
   async addImage(hotelId, imageUrl) {
     console.log("hotelFirebaseStore addImage started");
     const snapshot = await db.collection("hotels").doc(hotelId).get()
     let hotel = snapshot.data();
     console.log(hotel);
+    console.log("imageUrl:", imageUrl, typeof imageUrl);
     /*
     const imageOptions = [
       "https://cdn.stocksnap.io/img-thumbs/960w/hotel-room_DGBAEIS339.jpg",
@@ -49,8 +67,10 @@ export const hotelFirebaseStore = {
     hotel.imageURL = randomImageURL;
     */
    console.log("adding imageUrlArray");
-    if (hotel.imageURLarray) {
-      hotel.imageURLarray.push(imageUrl);
+    if (hotel.imageUrlArray) {
+      console.log("hotel.imageURLarray", hotel.imageUrlArray);
+      hotel.imageUrlArray.push(imageUrl);
+      console.log("hotel.imageURLarray", hotel.imageUrlArray);
     } else {
       hotel.imageUrlArray = [imageUrl]
     }
@@ -143,13 +163,14 @@ export const hotelFirebaseStore = {
     await deleteCollection(db, "hotels", 100);
     console.log("hotelFirebaseStore deleteAllHotels completed");
   },
-
-  async updateHotel(hotel, updatedHotel) {
+  /*
+  async updateHotel(hotelId, updatedHotel) {
     console.log("hotelFirebaseStore updateHotel started");
-    await db.collection("hotels").doc(hotel._id).update(updatedHotel);
+    await db.collection("hotels").doc(hotelId).update(updatedHotel);
     // hotel.name = updatedHotel.name;
     // hotel.city = updatedHotel.city;
     // hotel.airport = updatedHotel.airport;
     console.log("hotelFirebaseStore updateHotel completed"); 
   },
+  */
 }
